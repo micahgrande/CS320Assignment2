@@ -80,14 +80,13 @@ int prog2d(){
             else 
                 printf("STR INT");
     printf("\n");
-    prog2d();
     }
-    quit: return (0);
+    return (0);
+    quit: return (1);
 }
 
 int digit(char number[]){
-    int check = 0;
-    for(; number[check] != 0; check++){
+    for(int check = 0; number[check] != 0; check++){
         if(!isdigit(number[check]))
             return 1;
         }
@@ -96,22 +95,23 @@ int digit(char number[]){
 
 int main(int argc, char *argv[]){
     printf("Assignment #2-6, Micah Joseph Grande, micah.grande@gmail.com\n");
-    int numCycle = atoi(argv[1]);
-    if (argc > 2){
+    if (argc != 2){
         printf("ERROR! Program 6 accepts 1 command line argument.\n");
-        return (1); 
+        return (0); 
     }
     else if(digit(argv[1]) == 1){
         printf("ERROR! Expected integer argument.\n");
-        return (1);
+        return (0);
     }
     else{
-        while(numCycle != 0);{
-            prog2d();
+        int numCycle = atoi(argv[1]);
+        while(numCycle != 0){
+            if (prog2d() == 1)
+                return (0);
             numCycle--;
         }
     }
-    return (1);
+    return (0);
 }
 
 
