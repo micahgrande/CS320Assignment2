@@ -44,7 +44,7 @@ int prog2d(){
     if(strcasecmp(buff,"QUIT") == 0)
         goto quit;
     if(strlen(buff2) > 20){
-        printf("Error! Input string too long.\n");
+        printf("ERROR! Input string too long.\n");
         prog2d();
     }
     else if(numtokens > 2 || numtokens == 0){
