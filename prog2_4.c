@@ -34,7 +34,7 @@ char **tokenizer(char *in, int *size){
 int prog2d(){
     char buff[65], buff2[65];
     char *intCheck;
-    printf(">");
+    printf("> ");
     fgets(buff,65,stdin);
     buff[strlen(buff)-1]='\0';
     strcpy(buff2,buff);
