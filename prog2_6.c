@@ -47,11 +47,11 @@ int prog2d(){
     intCheck = strtok (buff," ");
     if(strlen(buff2) > 65){
         printf("ERROR! Input string too long.\n");
-        prog2d();
+        goto again;
     }
     else if(numtokens > 2 || numtokens == 0){
         printf("ERROR! Incorrect number of tokens found.\n");
-        prog2d();
+        goto again;
     }   
     else {
         int STR,INT;
@@ -81,7 +81,7 @@ int prog2d(){
                 printf("STR INT");
     printf("\n");
     }
-    return (0);
+    again: return (0);
     quit: return (1);
 }
 
