@@ -72,7 +72,7 @@ int prog2d(){
             if (numtokens == 2 && (STR != 1 || INT != 1))
                 printf("ERROR! Expected STR INT.");
             else if (numtokens == 1 && INT > 0)
-                printf("ERROR! Expected STR");
+                printf("ERROR! Expected STR.");
             else if (numtokens == 1 && STR > 0)
                 printf("STR");
             else 
