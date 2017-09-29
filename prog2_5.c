@@ -37,12 +37,12 @@ int prog2d(){
     printf("> ");
     fgets(buff,256,stdin);
     buff[strlen(buff)-1]='\0';
+    if(strcasecmp(buff,"QUIT") == 0)
+        goto quit;
     strcpy(buff2,buff);
     int numtokens=0;
     char **tokens = tokenizer(buff,&numtokens);
     intCheck = strtok (buff," ");
-    if(strcasecmp(buff,"QUIT") == 0)
-        goto quit;
     if(strlen(buff2) > 65){
         printf("ERROR! Input string too long.\n");
         prog2d();
@@ -52,29 +52,31 @@ int prog2d(){
         prog2d();
     }   
     else {
+        int STR,INT;
+        STR = INT = 0;
         while (intCheck) {
-            int STR,INT;
-            STR = INT = 0;
+            int letterCount,digitCount;
+            letterCount = digitCount = 0;
             for(int i = 0;i < strlen(intCheck);i++){
-                if (isdigit(intCheck[i]) == 0)
-                    STR++;
+                if (isalpha(intCheck[i]) != 0)
+                    letterCount++;
                 if (isdigit(intCheck[i]) != 0)
+                    digitCount++;
+            }
+                if(letterCount > 0)
+                    STR++;
+                if(digitCount > 0)
                     INT++;
-            }
-            if (numtokens == 2 && STR == 0){
+        intCheck = strtok (NULL," ");
+        }
+            if (numtokens == 2 && (STR != 1 || INT != 1))
                 printf("ERROR! Expected STR INT.");
-                break;
-            }
             else if (numtokens == 1 && INT > 0)
                 printf("ERROR! Expected STR");
             else if (numtokens == 1 && STR > 0)
                 printf("STR");
-            else {
+            else 
                 printf("STR INT");
-                break;
-            }
-        intCheck = strtok (NULL," ");
-        }
     printf("\n");
     prog2d();
     }
